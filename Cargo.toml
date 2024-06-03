@@ -1,0 +1,15 @@
+[package]
+name = "ms-rs"
+version = "0.1.0"
+authors = ["Yoshi Jaeger <github@jaeger.berlin>"]
+description = "A Rust library that replicates the ms package from TypeScript for Rust."
+license = "MIT"
+repository = "https://github.com/smartarray/ms-rs"
+homepage = "https://github.com/smartarray/ms-rs"
+keywords = ["time", "milliseconds", "conversion"]
+categories = ["algorithms", "data-structures"]
+readme = "README.md"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
