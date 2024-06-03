@@ -46,7 +46,7 @@ fn main() {
 #### Using the convenience methods `unwrap_number` and `unwrap_str`
 
 ```rust
-use ms2::ms;
+use ms2::{ms, UnwrapMsOutput};
 
 fn main() {
     let ms_value = ms("1 hour").unwrap_number();

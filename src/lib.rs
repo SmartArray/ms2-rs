@@ -122,7 +122,7 @@ mod tests {
         // Test unwrap_number on Result
         assert_eq!(ms("2 days").unwrap_number(), 172_800_000);
         assert_eq!(ms("1 minute").unwrap_number(), 60_000);
-                
+
         assert!(ms("unknown").is_err());
     }
 }
