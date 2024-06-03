@@ -1,12 +1,12 @@
-## Contributing to ms-rs
-Thank you for considering contributing to ms-rs! Your help is greatly appreciated.
+## Contributing to `ms2`
+Thank you for considering contributing to `ms2`! Your help is greatly appreciated.
 
 ### Getting Started
 1. Fork the repository on GitHub.
 2. Clone your fork locally:
 
 ```sh
-git clone https://github.com/yourusername/ms-rs.git
+git clone https://github.com/smartarray/ms2.git
 ```
 
 3.Create a new branch for your contribution:

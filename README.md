@@ -12,7 +12,7 @@ Add ms2 to your Cargo.toml:
 
 ```toml
 [dependencies]
-ms2 = "0.1.3"
+ms2 = "0.1.4"
 ```
 
 Then use it in your code:
@@ -23,7 +23,7 @@ use ms2::ms;
 fn main() {
     let ms_output = ms("2 days").unwrap();
     match ms_output {
-        ms_rs::MsOutput::Milliseconds(ms) => println!("{}", ms), // Outputs: 172800000
+        ms2::MsOutput::Milliseconds(ms) => println!("{}", ms), // Outputs: 172800000
         _ => panic!("Expected milliseconds"),
     }
 }
@@ -37,7 +37,7 @@ use ms2::ms;
 fn main() {
     let time_str_output = ms(172800000).unwrap();
     match time_str_output {
-        ms_rs::MsOutput::Str(time_str) => println!("{}", time_str), // Outputs: "2 days"
+        ms2::MsOutput::Str(time_str) => println!("{}", time_str), // Outputs: "2 days"
         _ => panic!("Expected string"),
     }
 }
@@ -59,7 +59,7 @@ fn main() {
 ```
 
 ### Contributing:
-Contributions are welcome! Check the CONTRIBUTING.md file for more info.
+Contributions are welcome! Check the `CONTRIBUTING.md` file for more info.
 
 ### License:
 This project is licensed under the MIT License. See the LICENSE file for details.
