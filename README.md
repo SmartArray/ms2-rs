@@ -12,13 +12,13 @@ Add ms2 to your Cargo.toml:
 
 ```toml
 [dependencies]
-ms2 = "0.1.1"
+ms2 = "0.1.2"
 ```
 
 Then use it in your code:
 
 ```rust
-use ms_rs::ms;
+use ms2::ms;
 
 fn main() {
     let ms = ms("2 days").unwrap();
