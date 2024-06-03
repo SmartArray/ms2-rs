@@ -21,12 +21,41 @@ Then use it in your code:
 use ms2::ms;
 
 fn main() {
-    let ms = ms("2 days").unwrap();
-    println!("{}", ms); // Outputs: 172800000
-
-    let time_str = ms(172800000);
-    println!("{}", time_str); // Outputs: "2 days"
+    let ms_output = ms("2 days").unwrap();
+    match ms_output {
+        ms_rs::MsOutput::Milliseconds(ms) => println!("{}", ms), // Outputs: 172800000
+        _ => panic!("Expected milliseconds"),
+    }
 }
+```
+
+#### Using `ms2` with an integer input to convert to a human-readable string
+
+```rust
+use ms2::ms;
+
+fn main() {
+    let time_str_output = ms(172800000).unwrap();
+    match time_str_output {
+        ms_rs::MsOutput::Str(time_str) => println!("{}", time_str), // Outputs: "2 days"
+        _ => panic!("Expected string"),
+    }
+}
+```
+
+#### Using the convenience methods `unwrap_number` and `unwrap_str`
+
+```rust
+use ms2::ms;
+
+fn main() {
+    let ms_value = ms("1 hour").unwrap_number();
+    println!("{}", ms_value); // Outputs: 3600000
+
+    let time_str = ms(3600000).unwrap_str();
+    println!("{}", time_str); // Outputs: "1 hour"    
+}
+
 ```
 
 ### Contributing:
