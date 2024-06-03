@@ -1,4 +1,4 @@
-## ms-rs ⏱️
+## ms_modern-rs ⏱️
 > ms-rs is a Rust library that recreates the ms package from TypeScript for Rust. It helps you convert milliseconds to human-readable time strings and vice versa. If you need to work with time in your Rust project, ms-rs makes it easy.
 
 ### Features:
