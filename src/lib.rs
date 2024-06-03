@@ -110,6 +110,19 @@ mod tests {
             MsOutput::Str(s) => assert_eq!(s, "1 minute"),
             _ => panic!("Expected string"),
         }
+
+        // Test invalid input
         assert!(ms("unknown").is_err());
-    }    
+        assert!(ms("10 unknown_units").is_err());
+        
+        // Test unwrap_str on Result
+        assert_eq!(ms(60_000).unwrap_str(), "1 minute");
+        assert_eq!(ms(172_800_000).unwrap_str(), "2 days");
+        
+        // Test unwrap_milliseconds on Result
+        assert_eq!(ms("2 days").unwrap_milliseconds(), 172_800_000);
+        assert_eq!(ms("1 minute").unwrap_milliseconds(), 60_000);
+                
+        assert!(ms("unknown").is_err());
+    }
 }
