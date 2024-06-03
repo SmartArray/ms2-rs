@@ -59,7 +59,7 @@ impl MsOutput {
 
 pub trait UnwrapMsOutput {
     fn unwrap_str(self) -> String;
-    fn unwrap_milliseconds(self) -> u64;
+    fn unwrap_number(self) -> u64;
 }
 
 impl<E> UnwrapMsOutput for Result<MsOutput, E> {
@@ -71,7 +71,7 @@ impl<E> UnwrapMsOutput for Result<MsOutput, E> {
         }
     }
 
-    fn unwrap_milliseconds(self) -> u64 {
+    fn unwrap_number(self) -> u64 {
         match self {
             Ok(MsOutput::Milliseconds(ms)) => ms,
             Ok(_) => panic!("Expected MsOutput::Milliseconds"),
@@ -119,9 +119,9 @@ mod tests {
         assert_eq!(ms(60_000).unwrap_str(), "1 minute");
         assert_eq!(ms(172_800_000).unwrap_str(), "2 days");
         
-        // Test unwrap_milliseconds on Result
-        assert_eq!(ms("2 days").unwrap_milliseconds(), 172_800_000);
-        assert_eq!(ms("1 minute").unwrap_milliseconds(), 60_000);
+        // Test unwrap_number on Result
+        assert_eq!(ms("2 days").unwrap_number(), 172_800_000);
+        assert_eq!(ms("1 minute").unwrap_number(), 60_000);
                 
         assert!(ms("unknown").is_err());
     }
