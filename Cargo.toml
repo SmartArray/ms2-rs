@@ -1,5 +1,5 @@
 [package]
-name = "ms"
+name = "ms2"
 version = "0.1.0"
 authors = ["Yoshi Jaeger <github@jaeger.berlin>"]
 description = "A Rust library that replicates the ms package from TypeScript for Rust."
