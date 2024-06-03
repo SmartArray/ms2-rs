@@ -48,11 +48,34 @@ impl MsOutput {
         }
     }
 
-    pub fn unwrap_milliseconds(self) -> u64 {
+    pub fn unwrap_number(self) -> u64 {
         if let MsOutput::Milliseconds(ms) = self {
             ms
         } else {
             panic!("Expected MsOutput::Milliseconds")
+        }
+    }
+}
+
+pub trait UnwrapMsOutput {
+    fn unwrap_str(self) -> String;
+    fn unwrap_milliseconds(self) -> u64;
+}
+
+impl<E> UnwrapMsOutput for Result<MsOutput, E> {
+    fn unwrap_str(self) -> String {
+        match self {
+            Ok(MsOutput::Str(s)) => s,
+            Ok(_) => panic!("Expected MsOutput::Str"),
+            Err(_) => panic!("Unwrapping Result failed"),
+        }
+    }
+
+    fn unwrap_milliseconds(self) -> u64 {
+        match self {
+            Ok(MsOutput::Milliseconds(ms)) => ms,
+            Ok(_) => panic!("Expected MsOutput::Milliseconds"),
+            Err(_) => panic!("Unwrapping Result failed"),
         }
     }
 }
