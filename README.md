@@ -13,7 +13,7 @@ Add ms2 to your Cargo.toml:
 
 ```toml
 [dependencies]
-ms2 = "0.1.4"
+ms2 = "0.1.5"
 ```
 
 Then use it in your code:
