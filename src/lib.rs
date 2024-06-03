@@ -39,6 +39,24 @@ pub enum MsOutput {
     Milliseconds(u64),
 }
 
+impl MsOutput {
+    pub fn unwrap_str(self) -> String {
+        if let MsOutput::Str(s) = self {
+            s
+        } else {
+            panic!("Expected MsOutput::Str")
+        }
+    }
+
+    pub fn unwrap_milliseconds(self) -> u64 {
+        if let MsOutput::Milliseconds(ms) = self {
+            ms
+        } else {
+            panic!("Expected MsOutput::Milliseconds")
+        }
+    }
+}
+
 // Some basic tests for this library.
 // ToDo: Add more tests here. I needed to craft those quickly.
 #[cfg(test)]
