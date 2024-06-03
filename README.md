@@ -1,5 +1,5 @@
-## ms_modern-rs ⏱️
-> ms-rs is a Rust library that recreates the ms package from TypeScript for Rust. It helps you convert milliseconds to human-readable time strings and vice versa. If you need to work with time in your Rust project, ms-rs makes it easy.
+## `ms2-rs` ⏱️
+> ms2 is a Rust library that recreates the ms package from TypeScript for Rust. It helps you convert milliseconds to human-readable time strings and vice versa. If you need to work with time in your Rust project, ms2 makes it easy.
 
 ### Features:
 - ⏳ Convert time strings (like "2 days") to milliseconds.
@@ -8,11 +8,11 @@
 - 👍 Easy-to-use API based on the ms package from TypeScript.
 
 ### Usage:
-Add ms-rs to your Cargo.toml:
+Add ms2 to your Cargo.toml:
 
 ```toml
 [dependencies]
-ms-rs = "0.1.1"
+ms2 = "0.1.1"
 ```
 
 Then use it in your code:
