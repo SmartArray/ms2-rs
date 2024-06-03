@@ -6,6 +6,7 @@
 - ⏱️ Convert milliseconds to time strings.
 - ⏲️ Supports common time units like seconds, minutes, hours, and days.
 - 👍 Easy-to-use API based on the ms package from TypeScript.
+- 🍒 Possibility to import `format` or `parse` to use explicit and typesafe methods
 
 ### Usage:
 Add ms2 to your Cargo.toml:
@@ -56,6 +57,16 @@ fn main() {
     println!("{}", time_str); // Outputs: "1 hour"    
 }
 
+```
+
+#### Use raw explicit and typesafe methods `format` and `parse`
+```rust
+use ms2::{format, parse};
+
+fn main() {
+    println!("parse(\"60 seconds\") = {}", parse("60 seconds").unwrap()); // parse("60 seconds") = 60000
+    println!("format(172_800_000) = {}", format(172_800_000)); // format(172_800_000) = 2 days
+}
 ```
 
 ### Contributing:
