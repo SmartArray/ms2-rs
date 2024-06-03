@@ -12,7 +12,7 @@ Add ms-rs to your Cargo.toml:
 
 ```toml
 [dependencies]
-ms-rs = "0.1.0"
+ms-rs = "0.1.1"
 ```
 
 Then use it in your code:
