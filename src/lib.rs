@@ -135,7 +135,7 @@ mod tests {
 
         // Test unwrap_number on negative
         assert_eq!(ms("-2 days").unwrap_number(), -172_800_000);
-
+        assert!(ms("--2 days").is_err());
         assert!(ms("unknown").is_err());
     }
 }
