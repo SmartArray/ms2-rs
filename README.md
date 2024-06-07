@@ -13,7 +13,7 @@ Add ms2 to your Cargo.toml:
 
 ```toml
 [dependencies]
-ms2 = "0.1.5"
+ms2 = "0.2.0"
 ```
 
 Then use it in your code:
@@ -66,6 +66,16 @@ use ms2::{format, parse};
 fn main() {
     println!("parse(\"60 seconds\") = {}", parse("60 seconds").unwrap()); // parse("60 seconds") = 60000
     println!("format(172_800_000) = {}", format(172_800_000)); // format(172_800_000) = 2 days
+}
+```
+
+#### Support for negative values
+```rust
+use ms2::{format, parse};
+
+fn main() {
+    println!("parse(\"-60 seconds\") = {}", parse("-60 seconds").unwrap()); // parse("-60 seconds") = -60000
+    println!("format(-172_800_000) = {}", format(-172_800_000)); // format(-172_800_000) = -2 days
 }
 ```
 
