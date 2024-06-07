@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use once_cell::sync::Lazy;
 
 /// Define the units statically
-static UNITS: Lazy<HashMap<&str, u64>> = Lazy::new(|| {
+static UNITS: Lazy<HashMap<&str, i64>> = Lazy::new(|| {
     let mut m = HashMap::new();
     m.insert("ms", 1);
     m.insert("second", 1000);
@@ -18,7 +18,7 @@ static UNITS: Lazy<HashMap<&str, u64>> = Lazy::new(|| {
 
 /// This function parses an existing input (such as "5 minutes") and returns
 /// the value in miliseconds.
-pub fn parse(input: &str) -> Result<u64, &'static str> {
+pub fn parse(input: &str) -> Result<i64, &'static str> {
     // Calling trim on the input
     let tokens: Vec<&str> = input.split_whitespace().collect();
     if tokens.len() != 2 {
@@ -26,7 +26,7 @@ pub fn parse(input: &str) -> Result<u64, &'static str> {
     }
 
     // Try to parse number
-    let value: u64 = tokens[0].parse().map_err(|_| "Invalid number")?;
+    let value: i64 = tokens[0].parse().map_err(|_| "Invalid number")?;
     let unit = tokens[1];
 
     match UNITS.get(unit) {

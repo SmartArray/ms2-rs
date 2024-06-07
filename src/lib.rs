@@ -13,7 +13,7 @@ pub fn ms<T: Into<MsInput>>(input: T) -> Result<MsOutput, &'static str> {
 
 pub enum MsInput {
     Str(String),
-    Int(u64),
+    Int(i64),
 }
 
 impl From<&str> for MsInput {
@@ -28,15 +28,15 @@ impl From<String> for MsInput {
     }
 }
 
-impl From<u64> for MsInput {
-    fn from(i: u64) -> Self {
+impl From<i64> for MsInput {
+    fn from(i: i64) -> Self {
         MsInput::Int(i)
     }
 }
 
 pub enum MsOutput {
     Str(String),
-    Milliseconds(u64),
+    Milliseconds(i64),
 }
 
 impl MsOutput {
@@ -48,7 +48,7 @@ impl MsOutput {
         }
     }
 
-    pub fn unwrap_number(self) -> u64 {
+    pub fn unwrap_number(self) -> i64 {
         if let MsOutput::Milliseconds(ms) = self {
             ms
         } else {
@@ -59,7 +59,7 @@ impl MsOutput {
 
 pub trait UnwrapMsOutput {
     fn unwrap_str(self) -> String;
-    fn unwrap_number(self) -> u64;
+    fn unwrap_number(self) -> i64;
 }
 
 impl<E> UnwrapMsOutput for Result<MsOutput, E> {
@@ -71,7 +71,7 @@ impl<E> UnwrapMsOutput for Result<MsOutput, E> {
         }
     }
 
-    fn unwrap_number(self) -> u64 {
+    fn unwrap_number(self) -> i64 {
         match self {
             Ok(MsOutput::Milliseconds(ms)) => ms,
             Ok(_) => panic!("Expected MsOutput::Milliseconds"),
@@ -101,6 +101,16 @@ mod tests {
     }
 
     #[test]
+    fn test_negative_parse() {
+        assert_eq!(parse("-2 days").unwrap(), -172_800_000);
+    }
+
+    #[test]
+    fn test_negative_format() {
+        assert_eq!(format(-172_800_000), "-2 days");
+    }
+
+    #[test]
     fn test_ms_wrapper() {
         match ms("2 days").unwrap() {
             MsOutput::Milliseconds(ms) => assert_eq!(ms, 172_800_000),
@@ -122,6 +132,9 @@ mod tests {
         // Test unwrap_number on Result
         assert_eq!(ms("2 days").unwrap_number(), 172_800_000);
         assert_eq!(ms("1 minute").unwrap_number(), 60_000);
+
+        // Test unwrap_number on negative
+        assert_eq!(ms("-2 days").unwrap_number(), -172_800_000);
 
         assert!(ms("unknown").is_err());
     }
